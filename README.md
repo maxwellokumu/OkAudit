@@ -4,9 +4,36 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 
-An open-source collection of Python CLI tools for IT audit teams. Each skill is a
-self-contained script covering a specific audit domain — from identity and access
-reviews to vendor risk and application security.
+**Open-source Claude AI skills for IT audit automation and cybersecurity compliance.** Enhance your Claude AI assistant with specialized skills for IT auditors. Automate evidence analysis, risk assessments, and executive reporting across critical domains like identity access management, vendor risk evaluation, and network security. Perfect for building a complete audit team toolkit with AI-powered workflows.
+
+This repository provides modular Claude skills for IT audit teams — starting with Phase 1: Lead IT Auditor skills. Each skill is a self-contained tool designed for real-world audit workflows, reducing manual effort and improving accuracy in SOC 2, ISO 27001, NIST, and PCI-DSS audits.
+
+## Key Features
+- **Claude AI Integration**: Custom skills that extend Claude's capabilities for audit-specific tasks.
+- **Automation-First**: AI-enhanced tools for gap analysis, anomaly detection, and report generation.
+- **Framework Coverage**: Supports major compliance frameworks (SOC 2, ISO 27001, NIST, PCI-DSS).
+- **Modular Design**: Each skill is standalone, easy to integrate into Claude workflows.
+- **Open-Source**: Free to use, modify, and contribute — built by auditors for auditors.
+
+## Current Phase: Lead IT Auditor Skills
+
+| Skill | Description |
+|-------|-------------|
+| `audit-scope-checklist` | Generate a scoped audit program with controls mapped to roles and frameworks |
+| `artefact-gap-analyzer` | Compare expected evidence artefacts against provided files and report gaps |
+| `exec-summary-writer` | Convert structured findings JSON into a polished executive summary |
+| `playbook` | Step-by-step lead auditor playbook (engagement planning through closeout) |
+
+## Quick Start
+1. Install Claude Desktop or integrate with Claude API.
+2. Load the skill.yaml files into your Claude environment.
+3. Use triggers like "artefact gap analysis" to activate skills.
+
+## Contributing
+We welcome contributions! Add new skills for additional audit roles. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. Star this repo to support open-source Claude skills for IT audits.
+
+## License
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 

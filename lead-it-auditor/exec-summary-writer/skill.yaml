@@ -1,0 +1,37 @@
+name: "exec-summary-writer"
+version: "1.0.0"
+description: "Convert a structured findings JSON file into a polished executive summary with risk breakdown, key findings table, and recommendations."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["executive summary", "audit report", "findings summary", "risk summary", "audit summary"]
+  - patterns: ["write.*executive.*summary", "generate.*audit.*report", "summarise.*findings"]
+parameters:
+  - name: findings
+    type: string
+    required: true
+    description: "Path to JSON file containing audit findings [{title, description, risk_level, recommendation, affected_system}]"
+  - name: scope
+    type: string
+    required: false
+    description: "Optional scope description to include in the report header"
+  - name: author
+    type: string
+    required: false
+    description: "Report author name (default: IT Audit Team)"
+  - name: date
+    type: string
+    required: false
+    description: "Report date in YYYY-MM-DD format (default: today)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args:
+    - "--findings"
+    - "{{findings}}"
+    - "--scope"
+    - "{{scope}}"
+    - "--author"
+    - "{{author}}"
+    - "--date"
+    - "{{date}}"

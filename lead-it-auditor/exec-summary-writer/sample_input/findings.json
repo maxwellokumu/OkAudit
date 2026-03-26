@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Root account used for routine operations",
+    "description": "The AWS root account has been used for day-to-day administrative tasks on 14 occasions in the past 90 days. Root account usage bypasses all IAM permission boundaries and leaves no granular audit trail.",
+    "risk_level": "Critical",
+    "recommendation": "Immediately disable root account access keys, enable MFA on the root account, and enforce a policy that root is used only for account-level tasks that cannot be delegated to IAM roles.",
+    "affected_system": "AWS IAM / Root Account"
+  },
+  {
+    "title": "Overly permissive IAM policies with wildcard actions",
+    "description": "Twelve IAM roles were identified with Action: '*' or Resource: '*' in their attached policies. Five of these roles are assigned to EC2 instances running internet-facing applications, creating a significant privilege escalation risk.",
+    "risk_level": "Critical",
+    "recommendation": "Implement least-privilege IAM policies for all roles. Replace wildcard actions with explicit action lists. Use IAM Access Analyzer to generate policies based on actual access patterns.",
+    "affected_system": "AWS IAM"
+  },
+  {
+    "title": "MFA not enforced for all privileged accounts",
+    "description": "Of 34 IAM users with administrative privileges, 9 (26%) do not have MFA enabled. Three of these accounts have console access and active access keys, representing a significant account takeover risk.",
+    "risk_level": "High",
+    "recommendation": "Enforce MFA via an IAM policy condition (aws:MultiFactorAuthPresent) on all privileged roles. Remove console access from service accounts. Audit and rotate access keys older than 90 days.",
+    "affected_system": "AWS IAM"
+  },
+  {
+    "title": "CloudTrail logging disabled in three regions",
+    "description": "CloudTrail is not enabled in us-west-1, ap-southeast-2, and eu-north-1. Although primary workloads are in us-east-1, several S3 buckets and Lambda functions exist in the unmonitored regions, creating blind spots for incident detection.",
+    "risk_level": "High",
+    "recommendation": "Enable CloudTrail in all regions using a multi-region trail. Configure log file integrity validation and ship logs to a dedicated security account S3 bucket with restricted access.",
+    "affected_system": "AWS CloudTrail"
+  },
+  {
+    "title": "Security groups allow unrestricted inbound SSH and RDP",
+    "description": "14 EC2 security groups permit inbound SSH (port 22) and RDP (port 3389) from 0.0.0.0/0. This exposes management interfaces directly to the internet, increasing the attack surface for brute-force and exploitation attempts.",
+    "risk_level": "High",
+    "recommendation": "Restrict SSH and RDP access to specific corporate IP ranges or replace with AWS Systems Manager Session Manager for keyless, auditable access. Review and remediate all security groups within 30 days.",
+    "affected_system": "AWS EC2 / Security Groups"
+  },
+  {
+    "title": "Vendor contracts missing right-to-audit clauses",
+    "description": "Review of 23 active vendor contracts found that 8 (35%) do not include a right-to-audit clause. Five of these vendors process personally identifiable information on behalf of the organisation.",
+    "risk_level": "High",
+    "recommendation": "Renegotiate or amend contracts at next renewal to include right-to-audit provisions. For vendors processing PII, treat this as a priority and seek legal counsel on interim arrangements.",
+    "affected_system": "Vendor Contracts"
+  },
+  {
+    "title": "No formal patch management process for third-party software",
+    "description": "The organisation lacks a documented patch management policy for third-party applications. Vulnerability scans identified 47 medium and high severity CVEs across 12 servers that have not been patched in over 6 months.",
+    "risk_level": "Medium",
+    "recommendation": "Establish a patch management policy with defined SLAs (e.g., Critical: 7 days, High: 30 days, Medium: 90 days). Implement automated patch deployment tooling and track compliance via a dashboard.",
+    "affected_system": "Patch Management"
+  },
+  {
+    "title": "Privileged access reviews not conducted on schedule",
+    "description": "The access review policy requires quarterly reviews of all privileged accounts. Evidence shows the last completed review was 9 months ago. 6 former employees still have active accounts with elevated permissions.",
+    "risk_level": "Medium",
+    "recommendation": "Immediately revoke access for identified former employees. Implement an automated access review workflow (e.g., via identity governance tooling) to enforce quarterly review cycles with manager attestation.",
+    "affected_system": "Identity & Access Management"
+  }
+]

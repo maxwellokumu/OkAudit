@@ -1,0 +1,100 @@
+{
+  "controls": [
+    {
+      "id": "LIA-001",
+      "control": "Audit charter and independence",
+      "artefact": "audit_charter.pdf",
+      "details": "Verify the internal audit charter is approved by the board and grants unrestricted access.",
+      "acceptance": "Signed charter on file, dated within 2 years, no management reporting line for CAE.",
+      "role": "lead-it-auditor"
+    },
+    {
+      "id": "LIA-002",
+      "control": "Prior audit reports review",
+      "artefact": "prior_audit_reports.pdf",
+      "details": "Obtain and review the last two cycles of audit reports for repeat findings.",
+      "acceptance": "At least 2 prior reports obtained; repeat findings identified and tracked.",
+      "role": "lead-it-auditor"
+    },
+    {
+      "id": "IAM-001",
+      "control": "User access inventory",
+      "artefact": "user_access_report.csv",
+      "details": "Full export of all user accounts including service accounts, their roles, and last login date.",
+      "acceptance": "Complete list exported within 5 business days of request; includes all active and disabled accounts.",
+      "role": "identity-access"
+    },
+    {
+      "id": "IAM-002",
+      "control": "MFA enforcement status",
+      "artefact": "mfa_status_report.csv",
+      "details": "Report showing MFA enrolment status for all user accounts.",
+      "acceptance": "100% of privileged accounts and 95%+ of standard accounts enrolled in MFA.",
+      "role": "identity-access"
+    },
+    {
+      "id": "IAM-003",
+      "control": "Privileged account listing",
+      "artefact": "privileged_accounts.csv",
+      "details": "List of all accounts with admin, root, or elevated privileges including service accounts.",
+      "acceptance": "All privileged accounts documented with business justification and named owner.",
+      "role": "identity-access"
+    },
+    {
+      "id": "CC-001",
+      "control": "Information security policy",
+      "artefact": "infosec_policy.pdf",
+      "details": "Current approved information security policy document.",
+      "acceptance": "Policy approved by management, reviewed within the last 12 months, version controlled.",
+      "role": "compliance-controls"
+    },
+    {
+      "id": "CC-002",
+      "control": "Risk register",
+      "artefact": "risk_register.xlsx",
+      "details": "Current risk register showing identified risks, ratings, owners, and treatment plans.",
+      "acceptance": "Updated within last quarter, all High/Critical risks have treatment plans and owners.",
+      "role": "compliance-controls"
+    },
+    {
+      "id": "LOG-001",
+      "control": "Logging configuration evidence",
+      "artefact": "logging_config.json",
+      "details": "Evidence that centralised logging is enabled for all in-scope systems.",
+      "acceptance": "All systems logging to SIEM/central store; retention >= 12 months.",
+      "role": "log-monitoring"
+    },
+    {
+      "id": "LOG-002",
+      "control": "Alert rule documentation",
+      "artefact": "alert_rules.pdf",
+      "details": "Documentation of active monitoring alert rules and thresholds.",
+      "acceptance": "Alert rules documented, reviewed within 6 months, mapped to threat scenarios.",
+      "role": "log-monitoring"
+    },
+    {
+      "id": "NET-001",
+      "control": "Firewall rule set export",
+      "artefact": "firewall_rules.csv",
+      "details": "Full export of all firewall ACL rules including source, destination, port, and action.",
+      "acceptance": "Complete rule set provided; last review date confirmed within 6 months.",
+      "role": "network-security"
+    },
+    {
+      "id": "NET-002",
+      "control": "Network diagram",
+      "artefact": "network_diagram.pdf",
+      "details": "Current network architecture diagram showing zones, segments, and trust boundaries.",
+      "acceptance": "Diagram current within 12 months, shows DMZ, internal, management, and external zones.",
+      "role": "network-security"
+    },
+    {
+      "id": "APP-001",
+      "control": "Vulnerability scan report",
+      "artefact": "vuln_scan_report.csv",
+      "details": "Latest vulnerability scan results for all in-scope applications and infrastructure.",
+      "acceptance": "Scan completed within 90 days; all Critical/High findings have remediation tickets.",
+      "role": "application-security"
+    }
+  ]
+}

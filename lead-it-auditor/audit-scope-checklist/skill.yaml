@@ -1,0 +1,43 @@
+name: "audit-scope-checklist"
+version: "1.0.0"
+description: "Generate a scoped IT audit program with controls mapped to roles and compliance frameworks. Outputs a markdown report and audit_program.json."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["audit scope", "audit program", "audit checklist", "control checklist", "audit planning"]
+  - patterns: ["generate.*audit.*program", "create.*audit.*scope", "plan.*audit"]
+parameters:
+  - name: system
+    type: string
+    required: true
+    description: "Description of the system or environment being audited"
+  - name: roles
+    type: string
+    required: false
+    description: "Comma-separated list of role IDs to include (default: all roles)"
+  - name: frameworks
+    type: string
+    required: false
+    description: "Comma-separated list of compliance frameworks to annotate (e.g. SOC2,CIS,ISO27001)"
+  - name: mode
+    type: string
+    required: false
+    description: "Execution mode: local (default), aws, or azure"
+  - name: output_dir
+    type: string
+    required: false
+    description: "Directory to write audit_program.json (default: current directory)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args:
+    - "--system"
+    - "{{system}}"
+    - "--roles"
+    - "{{roles}}"
+    - "--frameworks"
+    - "{{frameworks}}"
+    - "--mode"
+    - "{{mode}}"
+    - "--output-dir"
+    - "{{output_dir}}"

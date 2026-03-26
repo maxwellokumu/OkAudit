@@ -1,0 +1,29 @@
+name: "anomaly-detector"
+version: "1.0.0"
+description: "Detect behavioural anomalies in log data by comparing a test period against a historical baseline using mean + N*stddev thresholds per user."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["anomaly detection", "baseline comparison", "unusual activity", "behavioural analytics"]
+  - patterns: ["detect.*anomal", "baseline.*comparison", "unusual.*user.*activity"]
+parameters:
+  - name: logs
+    type: string
+    required: true
+    description: "Path to historical baseline log file (JSON-lines)"
+  - name: test
+    type: string
+    required: true
+    description: "Path to test period log file (JSON-lines)"
+  - name: sensitivity
+    type: float
+    required: false
+    description: "Std dev multiplier for threshold (default: 2.0, range: 1.0–3.0)"
+  - name: min_events
+    type: integer
+    required: false
+    description: "Minimum events for baseline per user (default: 5)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--logs", "{{logs}}", "--test", "{{test}}"]

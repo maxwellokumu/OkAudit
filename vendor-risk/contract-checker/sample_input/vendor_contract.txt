@@ -1,0 +1,67 @@
+MASTER SERVICES AGREEMENT
+
+This Master Services Agreement ("Agreement") is entered into between Acme Corp ("Customer")
+and CloudVendor Ltd ("Vendor") as of January 1, 2025.
+
+1. SERVICES
+Vendor agrees to provide cloud-based data processing and analytics services as described
+in the applicable Statement of Work. Services shall be delivered in accordance with
+industry standards and best practices.
+
+2. SERVICE LEVEL AGREEMENT
+Vendor guarantees a system availability of 99.5% uptime measured on a monthly basis,
+excluding scheduled maintenance windows. In the event of downtime exceeding the SLA,
+Customer shall be entitled to service credits equal to 10% of monthly fees for each
+hour of excess downtime, up to a maximum of 30% of the monthly fee.
+
+3. CONFIDENTIALITY
+Each party agrees to maintain the confidentiality of the other party's proprietary
+information and trade secrets. Confidential information shall not be disclosed to
+third parties without prior written consent. This obligation survives termination
+of the Agreement for a period of five (5) years.
+
+4. DATA SECURITY AND BREACH NOTIFICATION
+Vendor shall implement and maintain appropriate technical and organisational measures
+to protect Customer data against unauthorised access, loss, or destruction. In the
+event of a data breach or security incident, Vendor shall notify Customer within
+forty-eight (48) hours of discovery. Vendor holds SOC 2 Type II certification,
+which is reviewed annually by an independent auditor.
+
+5. DATA PROCESSING
+Vendor shall process Customer data solely in accordance with Customer's documented
+instructions and for no other purpose. Vendor agrees to delete or return all personal
+data upon termination of this Agreement. Customer retains all ownership of its data
+throughout the term of this Agreement.
+
+6. TERMINATION
+Either party may terminate this Agreement for cause upon thirty (30) days written
+notice if the other party materially breaches the Agreement and fails to cure such
+breach within the notice period. Upon termination, Customer may export its data
+in standard formats for a period of sixty (60) days.
+
+7. LIMITATION OF LIABILITY
+In no event shall either party's total liability exceed the fees paid by Customer
+in the twelve (12) months preceding the claim. This limitation of liability applies
+to all claims, including negligence, breach of contract, and breach of warranty.
+Neither party shall be liable for indirect, incidental, or consequential damages.
+
+8. GOVERNING LAW
+This Agreement shall be governed by and construed in accordance with the laws of
+England and Wales. Any disputes shall be subject to the exclusive jurisdiction
+of the courts of England and Wales.
+
+9. INTELLECTUAL PROPERTY
+All intellectual property developed by Vendor in connection with the services shall
+remain the property of Vendor. Customer retains all rights to its data and any
+pre-existing intellectual property provided to Vendor.
+
+10. SUBCONTRACTORS
+Vendor may engage subcontractors to perform certain services under this Agreement,
+provided that Vendor remains responsible for the performance of such subcontractors.
+Customer consent is required before engaging any new subcontractor with access to
+Customer data.
+
+11. GENERAL
+This Agreement constitutes the entire agreement between the parties. Any amendments
+must be in writing and signed by both parties. If any provision is found unenforceable,
+the remaining provisions shall continue in full force and effect.

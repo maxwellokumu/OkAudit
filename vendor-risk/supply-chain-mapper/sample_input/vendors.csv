@@ -1,0 +1,13 @@
+vendor,dependencies,criticality,data_access,tier
+AWS,CloudFlare|Datadog,Critical,yes,1
+Salesforce,AWS,Critical,yes,1
+GitHub,AWS,High,no,1
+Stripe,AWS|Cybersource,Critical,yes,1
+Okta,AWS,High,yes,1
+Slack,AWS,Medium,no,1
+CloudFlare,,Medium,no,2
+Datadog,PagerDuty,Medium,no,2
+PagerDuty,,Low,no,3
+Cybersource,Visa|Mastercard,High,yes,2
+Visa,,Critical,yes,3
+Mastercard,,Critical,yes,3

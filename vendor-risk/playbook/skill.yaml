@@ -1,0 +1,16 @@
+name: "vendor-risk-playbook"
+version: "1.0.0"
+description: "Step-by-step vendor and third-party risk audit methodology: inventory, tiering, assessment, contract review, and ongoing monitoring."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["vendor playbook", "vendor risk methodology", "third party audit steps"]
+parameters:
+  - name: step
+    type: string
+    required: false
+    description: "Step number (1-5) or 'full'"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--step", "{{step}}"]

@@ -1,0 +1,25 @@
+name: "contract-checker"
+version: "1.0.0"
+description: "Check vendor, SaaS, or data-processor contracts for required clauses using keyword and synonym matching. Built-in clause libraries for 3 contract types (10+ clauses each)."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["contract review", "contract check", "contract clauses", "vendor contract", "data processing agreement"]
+  - patterns: ["check.*contract", "review.*contract.*clause", "missing.*clause"]
+parameters:
+  - name: contract
+    type: string
+    required: true
+    description: "Path to contract text file (.txt)"
+  - name: standard
+    type: string
+    required: false
+    description: "Built-in clause set: vendor, saas, or data-processor"
+  - name: requirements
+    type: string
+    required: false
+    description: "Path to JSON list of custom required clauses"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--contract", "{{contract}}", "--standard", "{{standard}}"]

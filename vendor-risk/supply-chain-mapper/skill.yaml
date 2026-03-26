@@ -1,0 +1,21 @@
+name: "supply-chain-mapper"
+version: "1.0.0"
+description: "Generate a Mermaid supply chain diagram and markdown summary from a vendor CSV. Highlights Critical vendors, data-access vendors, dashed tier-2+ edges, and flags circular dependencies."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["supply chain", "vendor map", "vendor relationships", "third party map", "vendor diagram"]
+  - patterns: ["map.*vendor", "supply.*chain.*diagram", "vendor.*relationship"]
+parameters:
+  - name: vendors
+    type: string
+    required: true
+    description: "Path to CSV: vendor,dependencies,criticality,data_access,tier"
+  - name: output
+    type: string
+    required: false
+    description: "Output: mermaid, markdown, or both (default: both)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--vendors", "{{vendors}}"]

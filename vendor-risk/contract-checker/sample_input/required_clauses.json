@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Penetration Testing Disclosure",
+    "keywords": ["penetration test", "pen test", "security testing"],
+    "synonyms": ["vulnerability assessment", "security assessment"],
+    "risk_if_missing": "No requirement for vendor to conduct or disclose security testing results."
+  },
+  {
+    "name": "Business Continuity Plan",
+    "keywords": ["business continuity", "bcp", "disaster recovery"],
+    "synonyms": ["continuity plan", "recovery plan", "dr plan"],
+    "risk_if_missing": "Vendor has no contractual obligation to maintain a tested business continuity plan."
+  },
+  {
+    "name": "Employee Background Checks",
+    "keywords": ["background check", "screening", "vetting"],
+    "synonyms": ["employee screening", "staff vetting", "criminal record check"],
+    "risk_if_missing": "Vendor staff with access to Customer data may not be background checked."
+  }
+]

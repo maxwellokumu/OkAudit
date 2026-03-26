@@ -1,0 +1,33 @@
+name: "log-analyzer"
+version: "1.0.0"
+description: "Parse CloudTrail/system JSON-lines logs and flag suspicious events using a built-in library of 24 patterns. Supports custom pattern overrides, date filtering, and AWS CloudTrail live mode."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["log analysis", "cloudtrail", "suspicious events", "log review", "security events"]
+  - patterns: ["analys.*logs", "flag.*suspicious", "cloudtrail.*review"]
+parameters:
+  - name: logs
+    type: string
+    required: false
+    description: "Path to JSON-lines log file (required for local mode)"
+  - name: patterns
+    type: string
+    required: false
+    description: "Path to JSON custom patterns file {event_name: severity}"
+  - name: mode
+    type: string
+    required: false
+    description: "Execution mode: local (default) or aws"
+  - name: start
+    type: string
+    required: false
+    description: "Filter events from this ISO timestamp"
+  - name: end
+    type: string
+    required: false
+    description: "Filter events until this ISO timestamp"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--logs", "{{logs}}", "--mode", "{{mode}}"]

@@ -1,7 +1,9 @@
 """Tests for application-security skills: vuln-parser, code-review-helper, devsecops-checker."""
+from __future__ import annotations
 
 import csv
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -13,10 +15,12 @@ APPSEC_DIR = REPO_ROOT / "application-security"
 
 
 def run(script: Path, args: list[str]) -> subprocess.CompletedProcess:
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
     return subprocess.run(
         [sys.executable, str(script)] + args,
         capture_output=True,
         text=True,
+        env=env,
     )
 
 
@@ -49,7 +53,6 @@ class TestVulnParser:
         assert result.returncode == 0
         data = json.loads(result.stdout)
         top_hosts = data["top_hosts"]
-        # 10.0.0.1 (Critical=10 pts) should outrank 10.0.0.2 (Low=1 pt)
         host_names = [h["host"] for h in top_hosts]
         assert host_names.index("10.0.0.1") < host_names.index("10.0.0.2")
 
@@ -150,9 +153,8 @@ class TestDevSecOpsChecker:
             pytest.skip("github_actions.yml sample not found")
         result = run(self.script, ["--config", str(config)])
         assert result.returncode == 0
-        # The sample is missing DAST and artifact signing
         out_lower = result.stdout.lower()
-        assert "missing" in out_lower or "❌" in result.stdout
+        assert "missing" in out_lower or "not present" in out_lower or "absent" in out_lower
 
     def test_maturity_score_in_output(self):
         """Maturity score should appear in markdown output."""

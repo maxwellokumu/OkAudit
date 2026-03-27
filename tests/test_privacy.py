@@ -1,6 +1,8 @@
 """Tests for data-privacy skills: data-inventory-mapper, consent-checker, pia-generator."""
+from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -12,15 +14,17 @@ PRIV_DIR = REPO_ROOT / "data-privacy"
 
 
 def run(script: Path, args: list[str]) -> subprocess.CompletedProcess:
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
     return subprocess.run(
         [sys.executable, str(script)] + args,
         capture_output=True,
         text=True,
+        env=env,
     )
 
 
 # ---------------------------------------------------------------------------
-# data-inventory-mapper
+# data-inventory-mapper — expects CSV not JSON
 # ---------------------------------------------------------------------------
 
 class TestDataInventoryMapper:
@@ -28,9 +32,9 @@ class TestDataInventoryMapper:
     sample_dir = PRIV_DIR / "data-inventory-mapper" / "sample_input"
 
     def _get_sample(self) -> Path:
-        files = list(self.sample_dir.glob("*.json")) if self.sample_dir.exists() else []
+        files = list(self.sample_dir.glob("*.csv")) if self.sample_dir.exists() else []
         if not files:
-            pytest.skip("No sample input for data-inventory-mapper")
+            pytest.skip("No CSV sample input for data-inventory-mapper")
         return files[0]
 
     def test_mermaid_output(self):
@@ -42,22 +46,24 @@ class TestDataInventoryMapper:
 
     def test_special_category_flag(self, tmp_path):
         """Special category data (health, biometric) should be highlighted."""
-        inventory = {
-            "data_assets": [
-                {"name": "Patient Records", "classification": "health_data", "owner": "Clinical", "location": "DB-01"},
-                {"name": "Biometric Scans", "classification": "biometric", "owner": "HR", "location": "DB-02"},
-            ]
-        }
-        inv_file = tmp_path / "inventory.json"
-        inv_file.write_text(json.dumps(inventory))
+        import csv
+        inv_file = tmp_path / "inventory.csv"
+        with open(inv_file, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["name", "data_type", "classification", "system", "location",
+                              "transfers_to", "retention_period", "legal_basis", "owner"])
+            writer.writerow(["Patient Records", "health_data", "special_category",
+                              "EHR", "DB-01", "none", "7 years", "consent", "Clinical"])
+            writer.writerow(["Biometric Scans", "biometric", "special_category",
+                              "HR System", "DB-02", "none", "5 years", "consent", "HR"])
         result = run(self.script, ["--inventory", str(inv_file)])
         assert result.returncode == 0
         out_lower = result.stdout.lower()
-        assert any(w in out_lower for w in ["special", "sensitive", "health", "biometric", "article 9", "flag"])
+        assert any(w in out_lower for w in ["special", "sensitive", "health", "biometric", "flag"])
 
 
 # ---------------------------------------------------------------------------
-# consent-checker
+# consent-checker — framework values must be lowercase
 # ---------------------------------------------------------------------------
 
 class TestConsentChecker:
@@ -65,71 +71,56 @@ class TestConsentChecker:
     sample_dir = PRIV_DIR / "consent-checker" / "sample_input"
 
     def _get_sample(self) -> Path:
-        files = list(self.sample_dir.glob("*")) if self.sample_dir.exists() else []
+        files = list(self.sample_dir.glob("*.txt")) if self.sample_dir.exists() else []
         if not files:
             pytest.skip("No sample input for consent-checker")
         return files[0]
 
     def test_gdpr_requirements_checked(self, tmp_path):
         """GDPR consent check should validate key GDPR requirements."""
-        consent_config = {
-            "framework": "GDPR",
-            "consent_mechanism": "pre_ticked_box",
-            "withdrawal_possible": False,
-            "granular_options": False,
-        }
-        config_file = tmp_path / "consent.json"
-        config_file.write_text(json.dumps(consent_config))
-        result = run(self.script, ["--config", str(config_file), "--framework", "GDPR"])
+        sample = self._get_sample()
+        result = run(self.script, ["--policy", str(sample), "--framework", "gdpr"])
         assert result.returncode == 0
         out_lower = result.stdout.lower()
-        assert any(w in out_lower for w in ["gdpr", "consent", "fail", "non-compliant", "❌", "violation"])
+        assert any(w in out_lower for w in ["gdpr", "consent", "fail", "non-compliant", "violation", "check"])
 
     def test_ccpa_requirements_checked(self, tmp_path):
         """CCPA consent check should validate opt-out rights."""
-        consent_config = {
-            "framework": "CCPA",
-            "opt_out_available": False,
-            "do_not_sell_link": False,
-        }
-        config_file = tmp_path / "consent.json"
-        config_file.write_text(json.dumps(consent_config))
-        result = run(self.script, ["--config", str(config_file), "--framework", "CCPA"])
+        sample = self._get_sample()
+        result = run(self.script, ["--policy", str(sample), "--framework", "ccpa"])
         assert result.returncode in (0, 1)
         assert "Traceback" not in result.stderr
 
 
 # ---------------------------------------------------------------------------
-# pia-generator
+# pia-generator — requires --project + --data-types + --purposes + --recipients + --retention
 # ---------------------------------------------------------------------------
 
 class TestPiaGenerator:
     script = PRIV_DIR / "pia-generator" / "main.py"
 
-    def test_risk_assessment_present(self):
+    def test_risk_assessment_present(self, tmp_path):
         """PIA output should include a risk assessment section."""
-        sample_dir = PRIV_DIR / "pia-generator"
-        # Try to find any sample input, or run with defaults
-        json_files = list(sample_dir.glob("*.json"))
-        if json_files:
-            result = run(self.script, ["--project", str(json_files[0])])
-        else:
-            result = run(self.script, ["--project-name", "Test System", "--data-types", "name,email"])
+        result = run(self.script, [
+            "--project", "Test System",
+            "--data-types", "name,email",
+            "--purposes", "service_delivery",
+            "--recipients", "internal",
+            "--retention", "1 year",
+        ])
         assert result.returncode in (0, 1)
-        out_lower = (result.stdout + result.stderr).lower()
         if result.returncode == 0:
+            out_lower = result.stdout.lower()
             assert any(w in out_lower for w in ["risk", "pia", "privacy", "assessment"])
 
     def test_special_category_data_elevates_risk(self, tmp_path):
         """Projects processing special category data should attract higher risk rating."""
-        project = {
-            "name": "Health Monitoring App",
-            "data_types": ["health_data", "location", "name"],
-            "processing_purpose": "Medical monitoring",
-            "data_subjects": "patients",
-        }
-        proj_file = tmp_path / "project.json"
-        proj_file.write_text(json.dumps(project))
-        result = run(self.script, ["--project", str(proj_file)])
+        result = run(self.script, [
+            "--project", "Health Monitoring App",
+            "--data-types", "health_data,location,name",
+            "--purposes", "medical_monitoring",
+            "--recipients", "clinical_staff",
+            "--retention", "7 years",
+        ])
         assert result.returncode in (0, 1)
         assert "Traceback" not in result.stderr

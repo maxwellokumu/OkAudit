@@ -1,0 +1,85 @@
+PRIVACY NOTICE
+Acme Solutions Ltd
+Last updated: January 2024
+
+1. WHO WE ARE
+
+Acme Solutions Ltd ("we", "us", "our") is the data controller responsible for your personal data. We are a software company registered in England and Wales, company number 12345678, with our registered office at 100 Tech Street, London, EC1A 1BB.
+
+If you have any questions about this privacy notice or our data protection practices, please contact our Privacy Team at privacy@acmesolutions.com.
+
+2. WHAT PERSONAL DATA WE COLLECT
+
+We collect and process the following categories of personal data:
+
+- Contact information: name, email address, telephone number, postal address
+- Account information: username, password (hashed), account preferences
+- Usage data: pages visited, features used, time and date of access, IP address
+- Payment information: billing address, last four digits of card (full card numbers are processed by our payment provider and not stored by us)
+- Communications: emails and messages you send to us
+
+3. WHY WE COLLECT YOUR DATA AND OUR LEGAL BASIS
+
+We process your personal data for the following purposes and rely on the following legal bases:
+
+- To provide our software services under the contract between us (legal basis: contract)
+- To send you service updates and account notifications (legal basis: contract)
+- To send you marketing communications where you have signed up to receive them (legal basis: consent)
+- To comply with legal and regulatory obligations such as tax reporting (legal basis: legal obligation)
+- To improve our products and detect fraud (legal basis: legitimate interests)
+
+4. WHO WE SHARE YOUR DATA WITH
+
+We may share your personal data with the following third parties and service providers:
+
+- Cloud infrastructure providers (Amazon Web Services) who host our platform
+- Payment processors who handle billing transactions on our behalf
+- Analytics providers who help us understand how our platform is used
+- Legal and regulatory authorities where required by law
+
+All our third-party processors are bound by data processing agreements and are required to maintain appropriate security standards.
+
+5. HOW LONG WE KEEP YOUR DATA
+
+We retain your personal data only for as long as necessary:
+
+- Account data is retained for the duration of your subscription plus 2 years after closure
+- Financial and billing records are retained for 7 years to comply with tax regulations
+- Marketing contact data is retained until you withdraw your consent or unsubscribe
+- Usage logs are retained for 90 days
+
+6. YOUR RIGHTS
+
+As a data subject, you have the following rights under UK GDPR:
+
+Right to access: You have the right to request a copy of the personal data we hold about you by submitting a subject access request (SAR) to privacy@acmesolutions.com.
+
+Right to rectification: If you believe any personal data we hold about you is inaccurate or incomplete, you have the right to correct it. Please contact us to update your information.
+
+Right to erasure: You have the right to request that we delete your personal data in certain circumstances, for example if you withdraw your consent or if we no longer need the data for the original purpose.
+
+Right to restrict processing: You have the right to request that we limit how we use your data in certain circumstances, for example while we verify the accuracy of your data.
+
+Right to data portability: Where we process your data based on your consent or on a contract, you have the right to receive a copy of your data in a structured, machine-readable format.
+
+Right to object: You have the right to object to processing where we rely on legitimate interests as our legal basis, including the right to opt out of direct marketing communications at any time.
+
+Right to withdraw consent: Where we process your data based on your consent, you have the right to withdraw your consent at any time by clicking the unsubscribe link in any marketing email or by contacting us at privacy@acmesolutions.com. Withdrawal of consent does not affect the lawfulness of any processing carried out before withdrawal.
+
+7. INTERNATIONAL DATA TRANSFERS
+
+Some of our service providers are located outside the UK and European Economic Area. When we transfer your personal data internationally, we ensure appropriate safeguards are in place, such as standard contractual clauses (SCCs) approved by the relevant supervisory authority, or we transfer to countries with an adequacy decision.
+
+8. DATA SECURITY
+
+We take the security of your data seriously. We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, or disclosure. These include encryption at rest and in transit, access controls, and regular security assessments.
+
+9. COMPLAINTS
+
+If you have a concern about how we handle your personal data, we encourage you to contact us first at privacy@acmesolutions.com so we can address your concern. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO), the UK supervisory authority for data protection, at www.ico.org.uk.
+
+10. CHANGES TO THIS NOTICE
+
+We may update this privacy notice from time to time. We will notify you of significant changes by email or by posting a notice on our website.
+
+For any questions about this privacy notice, please contact: privacy@acmesolutions.com

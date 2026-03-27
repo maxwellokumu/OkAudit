@@ -1,0 +1,17 @@
+name: "data-privacy-playbook"
+version: "1.0.0"
+description: "Step-by-step data privacy audit playbook covering data discovery, consent review, data subject rights verification, PIA execution, and reporting."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["data privacy audit", "GDPR audit", "privacy playbook", "data protection audit", "privacy review steps"]
+  - patterns: ["data.*privacy.*playbook", "how to audit.*privacy", "gdpr.*audit.*steps"]
+parameters:
+  - name: step
+    type: string
+    required: false
+    description: "Step number 1-5 or 'full' (default: full)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--step", "{{step}}"]

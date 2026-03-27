@@ -1,0 +1,21 @@
+name: "consent-checker"
+version: "1.0.0"
+description: "Analyses a privacy policy text file against GDPR, CCPA, or PDPA requirements and produces a weighted compliance score with gap analysis."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["privacy policy", "consent", "GDPR compliance", "CCPA", "PDPA", "data subject rights", "privacy notice"]
+  - patterns: ["check.*privacy.*policy", "analyse.*consent", "review.*privacy.*notice"]
+parameters:
+  - name: policy
+    type: string
+    required: true
+    description: "Path to privacy policy .txt file"
+  - name: framework
+    type: string
+    required: false
+    description: "Compliance framework: gdpr (default), ccpa, or pdpa"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--policy", "{{policy}}", "--framework", "{{framework}}"]

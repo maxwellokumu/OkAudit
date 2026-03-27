@@ -1,0 +1,32 @@
+# Indicators of Compromise - Sample IOC List
+# Format: one per line — IPs, CIDRs, domains, or hashes
+
+# Known malicious IPs
+185.220.101.5
+45.33.32.156
+91.108.4.15
+195.54.164.40
+198.51.100.42
+
+# Suspicious CIDR range (Tor exit node range example)
+10.10.0.0/16
+
+# Malicious domain (C2 server)
+malicious-c2.example.com
+
+# Known bad actor range
+172.16.0.0/12
+
+# Additional IPs with low hit expectation
+203.0.113.77
+203.0.113.88
+5.188.10.100
+
+# MD5 hash of known malware sample
+d41d8cd98f00b204e9800998ecf8427e
+
+# SHA256 hash of known malware dropper
+a87ff679a2f3e71d9181a67b7542122c45b23b5c7d2e4b3e5f6a7b8c9d0e1f2a
+
+# IPv6 suspicious host
+2001:db8::dead:beef

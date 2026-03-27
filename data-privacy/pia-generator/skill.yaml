@@ -1,0 +1,51 @@
+name: "pia-generator"
+version: "1.0.0"
+description: "Generates a structured Privacy Impact Assessment (PIA/DPIA) report from project parameters including data types, purposes, recipients, and retention periods."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["PIA", "DPIA", "privacy impact assessment", "data protection impact", "privacy assessment"]
+  - patterns: ["generate.*PIA", "create.*DPIA", "privacy.*impact.*assessment"]
+parameters:
+  - name: project
+    type: string
+    required: true
+    description: "Name of the project or system being assessed"
+  - name: data-types
+    type: string
+    required: true
+    description: "Comma-separated list of data types processed"
+  - name: purposes
+    type: string
+    required: true
+    description: "Comma-separated list of processing purposes"
+  - name: recipients
+    type: string
+    required: true
+    description: "Comma-separated list of data recipients"
+  - name: retention
+    type: string
+    required: true
+    description: "Data retention period"
+  - name: controller
+    type: string
+    required: false
+    description: "Name of the data controller"
+  - name: dpo
+    type: string
+    required: false
+    description: "Name or email of the Data Protection Officer"
+  - name: framework
+    type: string
+    required: false
+    description: "Framework: gdpr (default) or iso27701"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: [
+    "--project", "{{project}}",
+    "--data-types", "{{data-types}}",
+    "--purposes", "{{purposes}}",
+    "--recipients", "{{recipients}}",
+    "--retention", "{{retention}}"
+  ]

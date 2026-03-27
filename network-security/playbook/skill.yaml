@@ -1,0 +1,17 @@
+name: "network-security-playbook"
+version: "1.0.0"
+description: "Step-by-step network security audit playbook covering asset discovery, firewall review, segmentation validation, threat correlation, vulnerability scanning, and reporting."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["network audit", "network security playbook", "network review steps", "firewall audit guide"]
+  - patterns: ["network.*security.*playbook", "how to audit.*network"]
+parameters:
+  - name: step
+    type: string
+    required: false
+    description: "Step number 1-6 or 'full' (default: full)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--step", "{{step}}"]

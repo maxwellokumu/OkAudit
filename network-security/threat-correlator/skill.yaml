@@ -1,0 +1,25 @@
+name: "threat-correlator"
+version: "1.0.0"
+description: "Correlates network logs against a list of Indicators of Compromise (IOCs) including IPs, CIDRs, domains, and hashes."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["IOC", "threat intelligence", "indicator of compromise", "malicious IP", "threat correlation"]
+  - patterns: ["correlate.*logs", "check.*ioc", "match.*threat.*intel"]
+parameters:
+  - name: logs
+    type: string
+    required: true
+    description: "Path to CSV or JSON-lines network log file"
+  - name: iocs
+    type: string
+    required: true
+    description: "Path to IOC file (one entry per line: IPs, CIDRs, domains, hashes)"
+  - name: output
+    type: string
+    required: false
+    description: "Output format: markdown (default), json, or csv"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--logs", "{{logs}}", "--iocs", "{{iocs}}", "--output", "{{output}}"]

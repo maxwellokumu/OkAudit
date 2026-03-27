@@ -1,0 +1,25 @@
+name: "network-config-reviewer"
+version: "1.0.0"
+description: "Reviews firewall and network rules for security misconfigurations, overly permissive access, and risky rule patterns."
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["firewall", "network rules", "security group", "ACL", "inbound rules", "port exposure"]
+  - patterns: ["review.*firewall", "check.*security group", "audit.*network.*rules"]
+parameters:
+  - name: rules
+    type: string
+    required: false
+    description: "Path to CSV file with columns: source,destination,port,protocol,action,description"
+  - name: mode
+    type: string
+    required: false
+    description: "Execution mode: local (default) or aws"
+  - name: dry_run
+    type: boolean
+    required: false
+    description: "Use bundled sample data instead of live API calls"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--rules", "{{rules}}", "--mode", "{{mode}}"]

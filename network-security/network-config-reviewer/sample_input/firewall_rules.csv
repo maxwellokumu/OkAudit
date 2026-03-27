@@ -1,0 +1,21 @@
+source,destination,port,protocol,action,description
+0.0.0.0/0,10.0.0.5,22,TCP,ALLOW,
+0.0.0.0/0,10.0.0.6,3389,TCP,ALLOW,RDP open to internet
+any,any,any,any,ALLOW,Legacy catch-all rule
+10.0.1.0/24,10.0.2.0/24,443,TCP,ALLOW,Internal HTTPS traffic
+0.0.0.0/0,10.0.0.7,23,TCP,ALLOW,Telnet access
+10.0.0.0/8,10.0.1.5,3306,TCP,ALLOW,MySQL from internal network
+192.168.1.0/24,10.0.2.10,8080,TCP,ALLOW,
+0.0.0.0/0,10.0.0.8,80,TCP,ALLOW,Public HTTP web server
+10.0.3.0/24,10.0.1.0/24,1-65535,TCP,ALLOW,Broad port range legacy rule
+10.0.4.5,10.0.1.10,443,TCP,DENY,Block specific host HTTPS
+0.0.0.0/0,10.0.0.9,21,TCP,ALLOW,FTP upload server
+172.16.0.0/12,10.0.2.0/24,5432,TCP,ALLOW,Postgres from private network
+10.0.5.0/24,10.0.2.5,27017,TCP,ALLOW,MongoDB internal replication
+0.0.0.0/0,10.0.0.10,514,TCP,ALLOW,RSH legacy remote shell
+10.0.1.5,10.0.3.5,22,TCP,ALLOW,Bastion host SSH to app servers
+0.0.0.0/0,10.0.0.11,9200,TCP,ALLOW,Elasticsearch public API
+10.0.0.0/8,10.0.4.0/24,445,TCP,ALLOW,SMB file shares internal
+192.168.0.0/16,10.0.2.0/24,1000-5000,TCP,ALLOW,Broad range middleware
+10.0.6.0/24,10.0.2.0/24,5432,TCP,DENY,Block analytics subnet from DB
+10.0.1.0/24,10.0.5.0/24,443,TCP,ALLOW,App tier to payment API

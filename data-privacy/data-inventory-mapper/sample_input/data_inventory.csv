@@ -1,0 +1,16 @@
+system,data_type,classification,location,transfers_to,legal_basis,retention_period
+CRM,contact_details,Confidential,On-premise,Email Platform,legitimate_interests,3 years
+HR System,health,Special_Category,Cloud (Azure),Payroll System,legal_obligation,7 years
+HR System,employee_records,Confidential,Cloud (Azure),Pension Provider,contract,7 years
+Payroll System,financial,Special_Category,On-premise,HMRC,legal_obligation,7 years
+Marketing Platform,email_address,Internal,Cloud (AWS),Analytics Platform,consent,2 years
+Analytics Platform,behavioral,Confidential,Cloud (AWS),,legitimate_interests,1 year
+ERP,financial,Restricted,On-premise,Auditors,legal_obligation,7 years
+Customer Portal,contact_details,Confidential,Cloud (AWS),CRM,contract,3 years
+Customer Portal,health,Special_Category,Cloud (AWS),HR System,consent,5 years
+Document Management,employee_records,Confidential,On-premise,,contract,5 years
+CCTV System,biometric,Special_Category,On-premise,,legitimate_interests,30 days
+Email Platform,contact_details,Internal,Cloud (SaaS - Microsoft 365),,legitimate_interests,1 year
+Recruitment System,criminal_record,Special_Category,Cloud (SaaS),,legal_obligation,2 years
+Pension Provider,financial,Restricted,Third-party (external),,contract,10 years
+IT Service Desk,contact_details,Internal,On-premise,,legitimate_interests,2 years

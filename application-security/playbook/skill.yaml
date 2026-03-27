@@ -1,0 +1,17 @@
+name: "appsec-playbook"
+version: "1.0.0"
+description: "Step-by-step application security audit playbook covering threat modelling, SAST, DAST, supply chain, DevSecOps pipeline review, and vulnerability management"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["application security audit", "appsec playbook", "secure code review", "penetration test", "SAST DAST", "DevSecOps audit"]
+  - patterns: [".*application.*security.*playbook.*", ".*appsec.*audit.*guide.*"]
+parameters:
+  - name: step
+    type: string
+    required: false
+    description: "Step number 1-6 or 'full' (default: full)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--step", "{{step}}"]

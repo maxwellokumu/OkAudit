@@ -1,0 +1,25 @@
+name: "vuln-parser"
+version: "1.0.0"
+description: "Parse vulnerability scan results to produce risk-ranked host analysis and remediation priority matrix"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["vulnerability scan", "vuln report", "Nessus", "OpenVAS", "CVE findings", "risk scoring"]
+  - patterns: [".*vuln.*scan.*", ".*vulnerability.*report.*", ".*risk.*score.*host.*"]
+parameters:
+  - name: scan
+    type: string
+    required: true
+    description: "Path to vulnerability scan CSV"
+  - name: output
+    type: string
+    required: false
+    description: "Output format: markdown|json|csv (default: markdown)"
+  - name: top-hosts
+    type: integer
+    required: false
+    description: "Number of riskiest hosts to highlight (default: 10)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--scan", "{{scan}}", "--output", "{{output}}", "--top-hosts", "{{top-hosts}}"]

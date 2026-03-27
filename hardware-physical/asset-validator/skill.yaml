@@ -1,0 +1,25 @@
+name: "asset-validator"
+version: "1.0.0"
+description: "Reconcile IT asset inventory against discovered devices to identify ghost and rogue assets"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["asset inventory", "rogue device", "ghost asset", "hardware reconciliation", "asset validation"]
+  - patterns: [".*asset.*inventory.*", ".*discovered.*devices.*", ".*unauthori[sz]ed.*device.*"]
+parameters:
+  - name: inventory
+    type: string
+    required: true
+    description: "Path to CSV file of authorised asset inventory"
+  - name: discovered
+    type: string
+    required: true
+    description: "Path to CSV file of discovered/scanned assets"
+  - name: output
+    type: string
+    required: false
+    description: "Output format: markdown|json|csv (default: markdown)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--inventory", "{{inventory}}", "--discovered", "{{discovered}}", "--output", "{{output}}"]

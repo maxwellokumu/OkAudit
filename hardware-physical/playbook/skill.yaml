@@ -1,0 +1,17 @@
+name: "hardware-physical-playbook"
+version: "1.0.0"
+description: "Step-by-step hardware and physical security audit playbook covering asset inventory, access review, firmware, environmental controls, and reporting"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["hardware audit", "physical security audit", "asset audit playbook", "firmware audit", "environmental controls"]
+  - patterns: [".*hardware.*physical.*audit.*", ".*physical.*security.*playbook.*"]
+parameters:
+  - name: step
+    type: string
+    required: false
+    description: "Step number 1-5 or 'full' (default: full)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--step", "{{step}}"]

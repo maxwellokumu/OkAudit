@@ -1,0 +1,21 @@
+name: "devsecops-checker"
+version: "1.0.0"
+description: "Assess CI/CD pipeline configuration for DevSecOps security controls and produce a maturity score"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["DevSecOps", "CI/CD security", "pipeline security", "GitHub Actions", "GitLab CI", "Jenkins", "SAST pipeline"]
+  - patterns: [".*ci.?cd.*security.*", ".*pipeline.*security.*audit.*", ".*devsecops.*check.*"]
+parameters:
+  - name: config
+    type: string
+    required: true
+    description: "Path to CI/CD YAML configuration file"
+  - name: output
+    type: string
+    required: false
+    description: "Output format: markdown|json (default: markdown)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--config", "{{config}}", "--output", "{{output}}"]

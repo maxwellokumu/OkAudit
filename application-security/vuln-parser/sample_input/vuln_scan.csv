@@ -1,0 +1,41 @@
+vulnerability,severity,host,port,cve_id,description,plugin_id
+OpenSSL Heartbleed,Critical,10.0.1.10,443,CVE-2014-0160,OpenSSL TLS heartbeat extension memory disclosure allows reading private keys,15901
+Apache Struts RCE,Critical,10.0.1.10,8080,CVE-2017-5638,Remote code execution via Content-Type header in Jakarta Multipart parser,100980
+SSL/TLS Certificate Expired,Medium,10.0.1.10,443,,Server SSL certificate has expired,51192
+Apache Log4Shell,Critical,10.0.1.11,443,CVE-2021-44228,JNDI lookup in log messages allows remote code execution,155999
+MS17-010 EternalBlue,Critical,10.0.1.11,445,CVE-2017-0144,SMBv1 remote code execution vulnerability used by WannaCry ransomware,97737
+Weak SSH Cipher,Low,10.0.1.11,22,,SSH server configured with weak CBC-mode ciphers,70658
+SMB Signing Disabled,Medium,10.0.1.11,445,,SMB signing not required enabling man-in-the-middle attacks,57608
+Spring4Shell RCE,Critical,10.0.1.12,8443,CVE-2022-22965,Remote code execution via ClassLoader manipulation in Spring Framework,160224
+Default Credentials (admin/admin),Critical,10.0.1.12,80,CVE-2021-41773,Default credentials on web management interface allow admin access,999001
+HTTP TRACE Enabled,Low,10.0.1.12,80,,HTTP TRACE method enabled enabling cross-site tracing attacks,11213
+Outdated PHP Version,High,10.0.1.12,80,CVE-2023-3247,PHP 7.4 end-of-life with multiple unpatched CVEs,178943
+SSL POODLE Attack,High,10.0.1.13,443,CVE-2014-3566,SSLv3 POODLE padding oracle attack on CBC ciphersuites,78479
+Jenkins Unauthenticated RCE,Critical,10.0.1.13,8080,CVE-2024-23897,Jenkins CLI path traversal leads to arbitrary file read and RCE,199001
+Tomcat PUT Method RCE,High,10.0.1.13,8080,CVE-2017-12617,Partial PUT requests enable JSP upload and remote code execution,104618
+Self-Signed SSL Certificate,Low,10.0.1.13,443,,Server uses self-signed certificate not trusted by browsers,51192
+Open Redis No Auth,Critical,10.0.1.14,6379,CVE-2022-0543,Redis server accessible without authentication allows data theft and RCE,100071
+MongoDB No Auth,High,10.0.1.14,27017,,MongoDB accessible without authentication exposes all databases,65914
+Elasticsearch No Auth,High,10.0.1.14,9200,,Elasticsearch cluster accessible without authentication,97861
+Memcached UDP Amplification,Medium,10.0.1.14,11211,CVE-2018-1000115,Memcached UDP reflection DDoS amplification vector,108797
+Weak TLS Configuration,Medium,10.0.1.14,443,,Server supports TLS 1.0 which is deprecated and vulnerable,65821
+ProxyLogon Exchange RCE,Critical,10.0.1.15,443,CVE-2021-26855,Exchange Server SSRF allows authentication bypass and RCE,149148
+PrintNightmare,Critical,10.0.1.15,445,CVE-2021-34527,Windows Print Spooler RCE allows privilege escalation to SYSTEM,151571
+SMBGhost RCE,High,10.0.1.15,445,CVE-2020-0796,SMBv3 compression buffer overflow allows unauthenticated RCE,134420
+Outdated Windows Server,High,10.0.1.15,445,,Windows Server 2012 R2 end-of-support with no security patches,99998
+Telnet Service Enabled,High,10.0.1.15,23,,Telnet transmits credentials in plaintext,10281
+SNMP Default Community,Medium,10.0.1.15,161,CVE-2002-0013,SNMP v1/v2 using default 'public' community string,10264
+FTP Anonymous Login,Medium,10.0.1.15,21,,FTP server allows anonymous login exposing files,10079
+GitLab SSRF to RCE,Critical,10.0.1.16,443,CVE-2021-22205,ImageMagick SSRF vulnerability allows unauthenticated RCE,155900
+Drupal Drupalgeddon2,Critical,10.0.1.16,80,CVE-2018-7600,Drupal remote code execution via form API,109669
+Outdated jQuery,Medium,10.0.1.16,80,CVE-2019-11358,jQuery prototype pollution via jQuery.extend,126262
+Directory Listing Enabled,Low,10.0.1.16,80,,Web server exposes directory listings revealing application structure,10957
+Insecure HTTP Cookie,Low,10.0.1.16,80,,Session cookie missing Secure and HttpOnly flags,87733
+Citrix Bleed,Critical,10.0.1.17,443,CVE-2023-4966,Citrix ADC session token leak allows authentication bypass,192631
+Confluence RCE,Critical,10.0.1.17,8090,CVE-2022-26134,OGNL injection allows unauthenticated remote code execution,162188
+Weak Password Policy,Medium,10.0.1.17,0,,Account lockout policy not configured allowing brute force,999002
+Missing Security Headers,Low,10.0.1.17,443,,X-Frame-Options and Content-Security-Policy headers absent,84502
+Informational: Host Open Ports,Informational,10.0.1.17,0,,Host has 12 open TCP ports,12053
+VMware vCenter RCE,Critical,10.0.1.18,443,CVE-2021-21985,vCenter Server RCE via vSAN Health Check plugin,149946
+Outdated VMware Tools,High,10.0.1.18,0,CVE-2023-20900,VMware Tools SAML token signature bypass vulnerability,191671
+Informational: OS Identified,Informational,10.0.1.18,0,,Host OS identified as VMware ESXi 7.0.3,11936

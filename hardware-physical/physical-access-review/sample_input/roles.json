@@ -1,0 +1,42 @@
+{
+  "B001": {
+    "name": "Alice Smith",
+    "role": "Senior Engineer",
+    "allowed_doors": ["main-entrance", "office-a", "server-room"]
+  },
+  "B002": {
+    "name": "Bob Jones",
+    "role": "Developer",
+    "allowed_doors": ["main-entrance", "office-a", "office-b"]
+  },
+  "B003": {
+    "name": "Carol White",
+    "role": "Contractor",
+    "allowed_doors": ["main-entrance", "office-a"]
+  },
+  "B004": {
+    "name": "Dave Brown",
+    "role": "IT Support",
+    "allowed_doors": ["main-entrance", "office-a", "office-b", "server-room"]
+  },
+  "B005": {
+    "name": "Eve Davis",
+    "role": "Developer",
+    "allowed_doors": ["main-entrance", "office-a", "office-b"]
+  },
+  "B006": {
+    "name": "Frank Miller",
+    "role": "Manager",
+    "allowed_doors": ["main-entrance", "office-a", "office-b", "server-room"]
+  },
+  "B007": {
+    "name": "Grace Wilson",
+    "role": "Finance",
+    "allowed_doors": ["main-entrance", "office-a"]
+  },
+  "B008": {
+    "name": "Henry Taylor",
+    "role": "Security Guard",
+    "allowed_doors": ["main-entrance", "office-a", "office-b", "server-room", "datacenter"]
+  }
+}

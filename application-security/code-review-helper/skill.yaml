@@ -1,0 +1,25 @@
+name: "code-review-helper"
+version: "1.0.0"
+description: "Regex-based static analysis for security vulnerabilities across Python, JavaScript, Java, and Go source files"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["code review", "static analysis", "SAST", "security review", "source code audit", "secure code"]
+  - patterns: [".*code.*security.*review.*", ".*static.*analysis.*", ".*SAST.*scan.*"]
+parameters:
+  - name: code
+    type: string
+    required: true
+    description: "Path to source file to review"
+  - name: language
+    type: string
+    required: true
+    description: "Language: python|javascript|java|go"
+  - name: output
+    type: string
+    required: false
+    description: "Output format: markdown|json (default: markdown)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--code", "{{code}}", "--language", "{{language}}", "--output", "{{output}}"]

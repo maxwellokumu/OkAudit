@@ -1,0 +1,73 @@
+image: python:3.11-slim
+
+stages:
+  - test
+  - security
+  - build
+  - staging
+  - production
+
+variables:
+  DOCKER_IMAGE: registry.example.com/myapp
+
+cache:
+  paths:
+    - .pip-cache/
+
+unit-test:
+  stage: test
+  script:
+    - pip install -r requirements.txt
+    - pytest tests/ -v --cov=app --cov-report=xml
+
+sast-scan:
+  stage: security
+  image: semgrep/semgrep
+  script:
+    - semgrep --config=auto --json --output=semgrep-results.json app/
+  artifacts:
+    reports:
+      sast: semgrep-results.json
+
+secrets-scan:
+  stage: security
+  script:
+    - pip install detect-secrets
+    - detect-secrets scan > .secrets.baseline
+    - detect-secrets audit .secrets.baseline
+
+dependency-scan:
+  stage: security
+  script:
+    - pip install safety
+    - safety check -r requirements.txt --full-report
+
+build-image:
+  stage: build
+  image: docker:24
+  services:
+    - docker:24-dind
+  script:
+    - docker build -t $DOCKER_IMAGE:$CI_COMMIT_SHA .
+    - docker push $DOCKER_IMAGE:$CI_COMMIT_SHA
+
+deploy-staging:
+  stage: staging
+  environment:
+    name: staging
+    url: https://staging.example.com
+  script:
+    - kubectl set image deployment/myapp myapp=$DOCKER_IMAGE:$CI_COMMIT_SHA -n staging
+  only:
+    - main
+
+deploy-production:
+  stage: production
+  environment:
+    name: production
+    url: https://example.com
+  when: manual
+  script:
+    - kubectl set image deployment/myapp myapp=$DOCKER_IMAGE:$CI_COMMIT_SHA -n production
+  only:
+    - main

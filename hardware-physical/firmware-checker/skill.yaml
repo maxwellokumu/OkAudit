@@ -1,0 +1,21 @@
+name: "firmware-checker"
+version: "1.0.0"
+description: "Check device firmware versions against a CVE vulnerability database to identify unpatched devices"
+author: "IT Audit Team"
+license: "MIT"
+triggers:
+  - keywords: ["firmware", "CVE", "patch", "vulnerability", "device update", "firmware version"]
+  - patterns: [".*firmware.*vulnerab.*", ".*CVE.*firmware.*", ".*unpatched.*device.*"]
+parameters:
+  - name: devices
+    type: string
+    required: true
+    description: "Path to CSV file listing devices and their firmware versions"
+  - name: cve-db
+    type: string
+    required: false
+    description: "Path to custom CVE database CSV (uses built-in DB if omitted)"
+execution:
+  runtime: "python"
+  command: "python main.py"
+  args: ["--devices", "{{devices}}"]

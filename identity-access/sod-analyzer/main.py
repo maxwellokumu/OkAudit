@@ -171,6 +171,7 @@ def load_users(path: str) -> Dict[str, List[str]]:
 
     return {str(k): [normalise_role(role) for role in v] for k, v in data.items()}
 
+
 def load_custom_conflicts(path: str) -> List[Dict]:
     """Load custom conflict pairs from JSON file.
 

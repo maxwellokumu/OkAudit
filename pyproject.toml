@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "okaudit-core"
+version = "0.2.0"
+description = "Reusable IT audit capabilities and CLI workflows"
+requires-python = ">=3.8"
+
+[project.scripts]
+okaudit = "okaudit.cli:main"

@@ -65,3 +65,6 @@ evidence_tracker.json
 
 # NOTE: audit_program.json and other named outputs ARE committed
 # when they are sample/fixture files inside sample_input/ folders
+data-privacy/data-privacy-playbook.zip
+audit_program.json
+audit_program.json

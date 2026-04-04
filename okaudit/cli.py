@@ -5,6 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
+VERSION = "0.2.0"
 
 REGISTRY = {
     ("iam", "access-review"): {
@@ -46,11 +47,13 @@ def print_usage() -> None:
     print("Usage: okaudit <domain> <skill> [args...]")
     print("       okaudit list [domain]")
     print("       okaudit help <domain> <skill>")
+    print("       okaudit version")
     print("")
     print("Examples:")
     print("  okaudit list")
     print("  okaudit list iam")
     print("  okaudit help iam access-review")
+    print("  okaudit version")
     print("  okaudit iam access-review --input iam_policy.json")
     print("")
     print("Available domains:")
@@ -104,6 +107,11 @@ def handle_help(args) -> int:
     return 0
 
 
+def handle_version() -> int:
+    print(f"okaudit {VERSION}")
+    return 0
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print_usage()
@@ -114,6 +122,9 @@ def main() -> int:
 
     if sys.argv[1] == "help":
         return handle_help(sys.argv[2:])
+
+    if sys.argv[1] == "version":
+        return handle_version()
 
     if sys.argv[1] in {"-h", "--help"}:
         print_usage()
@@ -129,7 +140,19 @@ def main() -> int:
 
     info = command_info(domain, skill)
     if info is None:
-        print(f"Unknown command: {domain} {skill}")
+        if domain not in available_domains():
+            print(f"Unknown domain: {domain}")
+            print("")
+            print("Available domains:")
+            for item in available_domains():
+                print(f"  - {item}")
+            return 1
+
+        print(f"Unknown command in domain '{domain}': {skill}")
+        print("")
+        print(f"Available commands in {domain}:")
+        for item in commands_for_domain(domain):
+            print(f"  - {item}")
         print("")
         print("Use `okaudit list` to see available commands.")
         return 1

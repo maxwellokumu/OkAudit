@@ -42,3 +42,11 @@ def test_help_command_returns_success(capsys):
     assert result == 0
     assert "iam access-review" in captured.out
     assert "Description:" in captured.out
+
+
+def test_version_command_returns_success(capsys):
+    result = cli.handle_version()
+    captured = capsys.readouterr()
+
+    assert result == 0
+    assert "okaudit 0.2.0" in captured.out
